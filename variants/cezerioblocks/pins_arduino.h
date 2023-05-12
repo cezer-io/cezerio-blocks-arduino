@@ -26,7 +26,7 @@
 #include <avr/pgmspace.h>
 
 #define NUM_DIGITAL_PINS            20
-#define NUM_ANALOG_INPUTS           6
+#define NUM_ANALOG_INPUTS           8
 #define analogInputToDigitalPin(p)  ((p < 6) ? (p) + 14 : -1)
 
 #if defined(__AVR_ATmega8__)
@@ -109,7 +109,7 @@ static const uint8_t A7 = PIN_A7;
 //
 // 0-7 PE0-PE7   works
 // 8-13 PB0-PB5  works
-// 14-21 PA0-PA7 works 
+// 14-21 PA0-PA7 works
 // 22-29 PH0-PH7 works
 // 30-35 PG5-PG0 works
 // 36-43 PC7-PC0 works
