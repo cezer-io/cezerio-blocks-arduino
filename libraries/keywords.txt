@@ -1,0 +1,47 @@
+createDataRequestPacket		KEYWORD2
+getInputDataAndDriveOutput	KEYWORD2
+initSmartBlocks			KEYWORD2
+initSmartBlue			  KEYWORD2
+
+getAcc				KEYWORD2
+getGyro				KEYWORD2
+getDetect			KEYWORD2
+getEye				KEYWORD2
+getGesture		KEYWORD2
+getKnob				KEYWORD2
+getMic				KEYWORD2
+getPhoto			KEYWORD2
+getTemp				KEYWORD2
+getTilt				KEYWORD2
+getColour			KEYWORD2
+getSlide			KEYWORD2
+getFollow			KEYWORD2
+
+set360				KEYWORD2
+setBipp				KEYWORD2
+setColor			KEYWORD2
+setGrip				KEYWORD2
+setLevel			KEYWORD2
+setLight			KEYWORD2
+setLink				KEYWORD2
+setMotion			KEYWORD2
+setRoll				KEYWORD2
+setBirrr			KEYWORD2
+
+getSmartBlueData		KEYWORD2
+sendSmartBlueData		KEYWORD2
+sendRollerData			KEYWORD2
+sendChariotData			KEYWORD2
+sendSumoData			KEYWORD2
+sendBalanceData			KEYWORD2
+sendWindmillData		KEYWORD2
+sendFlyingCarData		KEYWORD2
+sendSpindleData			KEYWORD2
+sendTruckData			KEYWORD2
+sendTankData			KEYWORD2
+sendLineTrackerData		KEYWORD2
+sendArmData			KEYWORD2
+sendLoaderData			KEYWORD2
+sendSnakeData			KEYWORD2
+sendExcavatorData		KEYWORD2
+sendMazerData			KEYWORD2
