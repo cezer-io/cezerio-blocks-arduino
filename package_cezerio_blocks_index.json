@@ -15,8 +15,8 @@
           "category": "Arduino",
           "url": "http://downloads.arduino.cc/cores/staging/avr-1.8.6.tar.bz2",
           "archiveFileName": "avr-1.8.6.tar.bz2",
-          "checksum": "SHA-256:ff1d17274b5a952f172074bd36c3924336baefded0232e10982f8999c2f7c3b6",
-          "size": "7127080",
+          "checksum": "SHA-256:f4b0f6a78ad594b3e72acec9441f1a5e92c6d554208a803555086004f2115d5d",
+          "size": "8127379",
           "boards": [
             {
               "name": "cezerio Blocks"
