@@ -3,9 +3,9 @@
     {
       "name": "cezerio Blocks",
       "maintainer": "cezerio",
-      "websiteUrl": "http://www.cezerio.com/",
-      "Url": "https://downloads.arduino.cc/packages/package_index.tar.bz2",
-      "email": "packages@arduino.cc",
+      "websiteUrl": "https://github.com/cezer-io",
+      "Url": "https://github.com/cezer-io/cezerio-blocks-arduino",
+      "email": "hello@cezerio.com",
       "platforms": [
         {
           "name": "cezerio Blocks",
@@ -13,8 +13,8 @@
           "version": "1.0.0",
           "deprecated": false,
           "category": "Arduino",
-          "url": "http://downloads.arduino.cc/cores/staging/avr-1.8.6.tar.bz2",
-          "archiveFileName": "avr-1.8.6.tar.bz2",
+          "url": "https://github.com/cezer-io/cezerio-blocks-arduino/releases/download/1.0.0/cezerioblocks-1.0.0.zip",
+          "archiveFileName": "cezerioblocks-1.0.0.zip",
           "checksum": "SHA-256:f4b0f6a78ad594b3e72acec9441f1a5e92c6d554208a803555086004f2115d5d",
           "size": "8127379",
           "boards": [
