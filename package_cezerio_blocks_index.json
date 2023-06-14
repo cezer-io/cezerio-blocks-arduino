@@ -5,16 +5,13 @@
       "maintainer": "cezerio",
       "websiteUrl": "https://github.com/cezer-io",
       "email": "hello@cezerio.com",
-      "help": {
-        "online": "https://github.com/cezer-io"
-      },
       "platforms": [
         {
           "name": "cezerio Blocks",
           "architecture": "avr",
           "version": "1.0.0",
           "deprecated": false,
-          "category": "Arduino",
+          "category": "Contributed",
           "url": "https://github.com/cezer-io/cezerio-blocks-arduino/releases/download/1.0.0/cezerioblocks-1.0.0.zip",
           "archiveFileName": "cezerioblocks-1.0.0.zip",
           "checksum": "SHA-256:f4b0f6a78ad594b3e72acec9441f1a5e92c6d554208a803555086004f2115d5d",
