@@ -1,22 +1,4 @@
-/*
-  SendReceiveBluetooth.ino
-  2017 Copyright (c) RFtek Electronics Ltd.  All right reserved.
-  
-  Authors	: Huseyin Ulvi AYDOGMUS, Ozgur BOSTAN
-  Date		: 2017-04-28
-  
-  This sketch is a demo template for the logical operations of 
-  SmartBlock Bluetooth functions. 
-  
-  the SmartBlocks: 2x Knob Block, 1x Detect Block (Input Blocks)
-				           2x Lıght Block, 1x Bipp Block, 1x Motion Block (Output Blocks)
-
-  Note: Any of the interrupt capabilities can be used by uncommenting the 
-        #define statements (TIMER and/or CAN RECEIVE interrupt)
-  
-*/
-
-#include "SmartBlockFunctions.h"
+#include "cezerioBlocks.h"
 #include "DataTransferFunctions.h"
 
 unsigned char timerFlag = 0;
@@ -24,43 +6,43 @@ extern unsigned char resolvePacketFlag;
 extern capturedPacketType capturedPacket;
 
 void setup()
-{ 
-  initSmartBlocks(); 
+{
+  initcezerioBlocks();
   initSmartBlue();
 }
 
 void loop()
 {
-#if defined(CAN_RECEIVE_INTERRUPT_ENABLE)  
+#if defined(CAN_RECEIVE_INTERRUPT_ENABLE)
   if(!digitalRead(CAN_INT))
   {
-       
+
   }
 #endif
 
   if(timerFlag)
   {
-   
+
 
     timerFlag = 0;
   }
 
-  getSmartBlueData();	
+  getSmartBlueData();
 
   if(resolvePacketFlag)
   {
     switch(capturedPacket.data_packet.packet_id)
-    { 
+    {
       case BLE_ROBOT_NAME:	// gelen robot id "0x00" ve data değeri "0xFF" ise robot id'sini gönderir
 		    if(capturedPacket.data_packet.robot_id == 0x00 && capturedPacket.data_packet.data[0] == 0xFF)
 		    {
 		      sendRollerData(BLE_ROBOT_NAME, 0xFF);
 		    }
-    
-        break; 
+
+        break;
 
       case BLE_MOVE_FORWARD:
-      
+
         break;
 
       case BLE_MOVE_BACKWARD:
@@ -84,7 +66,7 @@ void loop()
         break;
 
       case BLE_MOVE_FORWARD_LEFT:
-    
+
         break;
 
       case BLE_MOVE_BACKWARD_RIGHT:
@@ -120,7 +102,7 @@ void loop()
         break;
 
       case BLE_FLIP:
- 
+
         break;
 
       case BLE_STOP:
@@ -262,9 +244,9 @@ void loop()
         break;
 
       default:
-      
+
         break;
-    } 
+    }
 
     resolvePacketFlag = 0;
   }
@@ -276,6 +258,3 @@ ISR(TIMER1_COMPA_vect)
   timerFlag = 1;
 }
 #endif
-/*********************************************************************************************************
-  END FILE
-*********************************************************************************************************/
