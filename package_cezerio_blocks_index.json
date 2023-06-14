@@ -10,7 +10,6 @@
           "name": "cezerio Blocks",
           "architecture": "avr",
           "version": "1.0.0",
-          "deprecated": false,
           "category": "Contributed",
           "url": "https://github.com/cezer-io/cezerio-blocks-arduino/archive/refs/tags/1.0.0.tar.gz",
           "archiveFileName": "1.0.0.tar.gz",
@@ -140,11 +139,7 @@
             }
           ]
         }
-      ],
-      "help": {
-        "online": "https://github.com/cezer-io"
-      }
+      ]
     }
-  ],
-  "IsTrusted": true
+  ]
 }
