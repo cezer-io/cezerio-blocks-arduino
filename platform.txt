@@ -1,12 +1,12 @@
 
-# Arduino AVR Core and platform.
+# cezerio Blocks
 # ------------------------------
 #
 # For more info:
-# https://arduino.github.io/arduino-cli/latest/platform-specification/
+# https://github.com/cezer-io/cezerio-blocks-arduino
 
-name=Arduino AVR Boards
-version=1.8.6
+name=cezerio Blocks
+version=1.0.1
 
 # AVR compile variables
 # ---------------------

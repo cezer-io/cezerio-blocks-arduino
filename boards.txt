@@ -1,4 +1,4 @@
-# See: https://arduino.github.io/arduino-cli/latest/platform-specification/
+# See: https://github.com/cezer-io/cezerio-blocks-arduino
 
 ##############################################################
 
