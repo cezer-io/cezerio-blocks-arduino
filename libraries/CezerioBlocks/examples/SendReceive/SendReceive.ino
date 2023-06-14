@@ -4,7 +4,7 @@ unsigned char timerFlag = 0;
 
 void setup()
 {
-  initcezerioBlocks();
+  initCezerioBlocks();
 }
 
 void loop()

@@ -18,7 +18,7 @@
 
   Date    : 2017-03-22
   Version : 1.2.0
-            - initcezerioBlocks() function added to simplfy startup process
+            - initCezerioBlocks() function added to simplfy startup process
 
   Date    : 2017-03-23
   Version : 1.2.1
@@ -84,7 +84,7 @@ capturedPacketType capturedPacket;
   * @param  None
   * @retval None
   */
-void initcezerioBlocks(void)
+void initCezerioBlocks(void)
 {
   Serial.begin(UART_BAUD_RATE);
 

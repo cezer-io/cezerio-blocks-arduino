@@ -93,7 +93,7 @@ unsigned char asciiToHex(unsigned char asciiData);
 unsigned char hexToAscii(unsigned char hexData);
 
 /* INIT FUNCTIONS */
-void initcezerioBlocks(void);
+void initCezerioBlocks(void);
 void initSmartBlue(void);
 
 /* BLE FUNCTIONS */

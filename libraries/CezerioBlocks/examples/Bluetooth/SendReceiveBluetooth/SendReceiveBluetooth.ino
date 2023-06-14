@@ -7,7 +7,7 @@ extern capturedPacketType capturedPacket;
 
 void setup()
 {
-  initcezerioBlocks();
+  initCezerioBlocks();
   initSmartBlue();
 }
 
