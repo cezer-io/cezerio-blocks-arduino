@@ -1,7 +1,7 @@
 /*
-  SmartBlockFunctions.cpp
+  cezerioBlocks.cpp
   2017 Copyright (c) RFtek Electronics Ltd.  All right reserved.
-  
+
   Authors	: Huseyin Ulvi AYDOGMUS, Ozgur BOSTAN
   Date		: 2017-03-20
   Version  : 1.0.0
@@ -18,16 +18,16 @@
 
   Date    : 2017-03-22
   Version : 1.2.0
-            - initSmartBlocks() function added to simplfy startup process
+            - initcezerioBlocks() function added to simplfy startup process
 
   Date    : 2017-03-23
   Version : 1.2.1
             - minor change; timer and can interrupt definitions moved to
-              "SmartBlockFunctions.h" from "SmartBlockFunctions.cpp"    
+              "cezerioBlocks.h" from "cezerioBlocks.cpp"
 
   Date    : 2017-03-30
   Version : 1.2.2
-            - new blocks and related functions added (TILT, COLOUR, SLIDE, FOLLOW, BIRRR)	
+            - new blocks and related functions added (TILT, COLOUR, SLIDE, FOLLOW, BIRRR)
 
   Date    : 2017-04-03
   Version : 1.3.0
@@ -43,7 +43,7 @@
             - new functions added for bluetooth communication (DataTransferFunctions)
 	    - new example sketch: SendReceiveBluetooth.ino
 
-  
+
   This library is free software; you can redistribute it and/or
   modify it under the terms of the GNU Lesser General Public
   License as published by the Free Software Foundation; either
@@ -60,7 +60,7 @@
   1301  USA
 */
 
-#include "SmartBlockFunctions.h"
+#include "cezerioBlocks.h"
 #include "SoftwareSerial.h"
 #include "DataTransferFunctions.h"
 
@@ -75,30 +75,30 @@ SoftwareSerial theSmartBlue(8, 9);				 // Set Software TX-RX to pins 8-9, instan
 capturedPacketType capturedPacket;
 
 /*********************************************************************************************************
- *  INIT FUNCTIONS 
+ *  INIT FUNCTIONS
  *********************************************************************************************************/
 
 
 /**
-  * @brief  Initialization for the blocks to be ready for operation 
+  * @brief  Initialization for the blocks to be ready for operation
   * @param  None
   * @retval None
   */
-void initSmartBlocks(void)
+void initcezerioBlocks(void)
 {
   Serial.begin(UART_BAUD_RATE);
-  
+
   // Initialize MCP2515 running at 16MHz with a baudrate of 1000kb/s and the masks and filters disabled.
   if(CAN.begin(MCP_ANY, CAN_1000KBPS, MCP_16MHZ) == CAN_OK)
     Serial.println("MCP2515 Initialized Successfully!");
   else
     Serial.println("Error Initializing MCP2515...");
-  
+
   CAN.setMode(MCP_NORMAL);                      // Set operation mode to normal so the MCP2515 sends acks to received data.
-  
+
 #if defined(CAN_RECEIVE_INTERRUPT_ENABLE)
   pinMode(CAN_INT, INPUT);                      // Configuring pin for /INT input
-#endif  
+#endif
 
   Serial.println("MCP2515 Library Receive Example...");
 
@@ -117,7 +117,7 @@ void initSmartBlocks(void)
 }
 
 /**
-  * @brief  Initialization for BLUE BLOCK to be ready for operation 
+  * @brief  Initialization for BLUE BLOCK to be ready for operation
   * @param  None
   * @retval None
   */
@@ -127,12 +127,12 @@ void initSmartBlue(void)
 }
 
 /*********************************************************************************************************
- *  BLE FUNCTIONS 
+ *  BLE FUNCTIONS
  *********************************************************************************************************/
 
 
 /**
-  * @brief  Get data from bluetooth device 
+  * @brief  Get data from bluetooth device
   * @param  None
   * @retval None
   */
@@ -148,12 +148,12 @@ void getSmartBlueData(void)
 }
 
 /**
-  * @brief  Send data to bluetooth device 
+  * @brief  Send data to bluetooth device
   * @param  None
   * @retval None
   */
 void sendSmartBlueData(unsigned char robotID, unsigned char packetID, unsigned char data)
-{  
+{
   theSmartBlue.write('$');
   theSmartBlue.write(robotID);
   theSmartBlue.write(packetID);
@@ -162,7 +162,7 @@ void sendSmartBlueData(unsigned char robotID, unsigned char packetID, unsigned c
 }
 
 /**
-  * @brief  Send Roller data to bluetooth device 
+  * @brief  Send Roller data to bluetooth device
   * @param  None
   * @retval None
   */
@@ -172,7 +172,7 @@ void sendRollerData(unsigned char packetID, unsigned char data)
 }
 
 /**
-  * @brief  Send Chariot data to bluetooth device 
+  * @brief  Send Chariot data to bluetooth device
   * @param  None
   * @retval None
   */
@@ -182,7 +182,7 @@ void sendChariotData(unsigned char packetID, unsigned char data)
 }
 
 /**
-  * @brief  Send Sumo data to bluetooth device 
+  * @brief  Send Sumo data to bluetooth device
   * @param  None
   * @retval None
   */
@@ -192,7 +192,7 @@ void sendSumoData(unsigned char packetID, unsigned char data)
 }
 
 /**
-  * @brief  Send Balance data to bluetooth device 
+  * @brief  Send Balance data to bluetooth device
   * @param  None
   * @retval None
   */
@@ -202,7 +202,7 @@ void sendBalanceData(unsigned char packetID, unsigned char data)
 }
 
 /**
-  * @brief  Send Windmill data to bluetooth device 
+  * @brief  Send Windmill data to bluetooth device
   * @param  None
   * @retval None
   */
@@ -212,7 +212,7 @@ void sendWindmillData(unsigned char packetID, unsigned char data)
 }
 
 /**
-  * @brief  Send FlyingCar data to bluetooth device 
+  * @brief  Send FlyingCar data to bluetooth device
   * @param  None
   * @retval None
   */
@@ -222,7 +222,7 @@ void sendFlyingCarData(unsigned char packetID, unsigned char data)
 }
 
 /**
-  * @brief  Send Spindle data to bluetooth device 
+  * @brief  Send Spindle data to bluetooth device
   * @param  None
   * @retval None
   */
@@ -232,7 +232,7 @@ void sendSpindleData(unsigned char packetID, unsigned char data)
 }
 
 /**
-  * @brief  Send Truck data to bluetooth device 
+  * @brief  Send Truck data to bluetooth device
   * @param  None
   * @retval None
   */
@@ -242,7 +242,7 @@ void sendTruckData(unsigned char packetID, unsigned char data)
 }
 
 /**
-  * @brief  Send Tank data to bluetooth device 
+  * @brief  Send Tank data to bluetooth device
   * @param  None
   * @retval None
   */
@@ -252,7 +252,7 @@ void sendTankData(unsigned char packetID, unsigned char data)
 }
 
 /**
-  * @brief  Send LineTracker data to bluetooth device 
+  * @brief  Send LineTracker data to bluetooth device
   * @param  None
   * @retval None
   */
@@ -262,7 +262,7 @@ void sendLineTrackerData(unsigned char packetID, unsigned char data)
 }
 
 /**
-  * @brief  Send Arm data to bluetooth device 
+  * @brief  Send Arm data to bluetooth device
   * @param  None
   * @retval None
   */
@@ -272,7 +272,7 @@ void sendArmData(unsigned char packetID, unsigned char data)
 }
 
 /**
-  * @brief  Send Loader data to bluetooth device 
+  * @brief  Send Loader data to bluetooth device
   * @param  None
   * @retval None
   */
@@ -282,7 +282,7 @@ void sendLoaderData(unsigned char packetID, unsigned char data)
 }
 
 /**
-  * @brief  Send Snake data to bluetooth device 
+  * @brief  Send Snake data to bluetooth device
   * @param  None
   * @retval None
   */
@@ -292,7 +292,7 @@ void sendSnakeData(unsigned char packetID, unsigned char data)
 }
 
 /**
-  * @brief  Send Excavator data to bluetooth device 
+  * @brief  Send Excavator data to bluetooth device
   * @param  None
   * @retval None
   */
@@ -302,7 +302,7 @@ void sendExcavatorData(unsigned char packetID, unsigned char data)
 }
 
 /**
-  * @brief  Send Mazer data to bluetooth device 
+  * @brief  Send Mazer data to bluetooth device
   * @param  None
   * @retval None
   */
@@ -312,11 +312,11 @@ void sendMazerData(unsigned char packetID, unsigned char data)
 }
 
 /*********************************************************************************************************
- *  GENERIC FUNCTIONS 
+ *  GENERIC FUNCTIONS
  *********************************************************************************************************/
 
 /**
-  * @brief  Sends data request for input blocks 
+  * @brief  Sends data request for input blocks
   * @param  INPUT BLOCK MESSAGE IDs
   * @retval None
   */
@@ -327,14 +327,14 @@ void createDataRequestPacket(unsigned int inputBlockMessageId)
 }
 
 /**
-  * @brief  Reads values from input blocks and drives 
+  * @brief  Reads values from input blocks and drives
 			output blocks with these data based on message IDs
   * @param  None
   * @retval None
   */
 void getInputDataAndDriveOutput(void)
 {
-  unsigned char motorSpeed 		= 0;	
+  unsigned char motorSpeed 		= 0;
   unsigned char motorAngle 		= 0;
   unsigned char ledState		  = 0;
   unsigned char redLedState 	= 0;
@@ -342,89 +342,89 @@ void getInputDataAndDriveOutput(void)
   unsigned char blueLedState	= 0;
   unsigned char buzzerState	  = 0;
   unsigned char	barGraphData	= 0;
-  
+
   CAN.readMsgBuf(&rxId, &len, rxBuf);      // Read data: len = data length, buf = data byte(s)
-  
+
   switch(rxId)
   {
   	case MESSAGE_ID_BALANCE_BLOCK:
-  	  
+
   	  break;
-  	  
+
   	case MESSAGE_ID_BALANCE_BLOCK + 1:
-  	  
+
   	  break;
-  	  
+
   	case MESSAGE_ID_DETECT_BLOCK:
-  	    	  
+
   	  break;
-  	  
+
   	case MESSAGE_ID_DETECT_BLOCK + 1:
-  	  
+
   	  break;
-  	  
+
   	case MESSAGE_ID_EYE_BLOCK:
-  	  
+
   	  break;
-  	  
+
   	case MESSAGE_ID_EYE_BLOCK + 1:
-  	  
+
   	  break;
-  	
+
   	case MESSAGE_ID_GESTURE_BLOCK:
-  	  
+
   	  break;
-  	  
+
   	case MESSAGE_ID_GESTURE_BLOCK + 1:
-  	  
+
   	  break;
-  	  
+
   	case MESSAGE_ID_KNOB_BLOCK:
-  	    	  
+
   	  break;
-  	  
+
   	case MESSAGE_ID_KNOB_BLOCK + 1:
-  	    	  
+
   	  break;
-  	  
+
   	case MESSAGE_ID_MIC_BLOCK:
-  	  
+
   	  break;
-  	  
+
   	case MESSAGE_ID_MIC_BLOCK + 1:
-  	  
+
   	  break;
-  	  
+
   	case MESSAGE_ID_PHOTO_BLOCK:
-  	  
+
   	  break;
-  	  
+
   	case MESSAGE_ID_PHOTO_BLOCK + 1:
-  	  
+
   	  break;
-  	
+
   	case MESSAGE_ID_TEMP_BLOCK:
-  	  
+
   	  break;
-  	  
+
   	case MESSAGE_ID_TEMP_BLOCK + 1:
-  	  
+
   	  break;
-  	
+
   	default:
   	  break;
   }
 }
 
 /**
-  * @brief  Converts ASCII numbers to hex (integer value) 
+  * @brief  Converts ASCII numbers to hex (integer value)
   * @param  Captured ASCII data
   * @retval Converted hex value
   */
 unsigned char asciiToHex(unsigned char asciiData)
 {
   unsigned char hexData = 0;
-  
+
   if((asciiData >= 0x30) && (asciiData <= 0x39))
   {
     hexData = asciiData - 0x30;
@@ -434,7 +434,7 @@ unsigned char asciiToHex(unsigned char asciiData)
 }
 
 /**
-  * @brief  Converts hex (integer value) numbers to ASCII 
+  * @brief  Converts hex (integer value) numbers to ASCII
   * @param  Captured hex data
   * @retval Converted ASCII value
   */
@@ -451,7 +451,7 @@ unsigned char hexToAscii(unsigned char hexData)
 }
 
 /*********************************************************************************************************
- *  INPUT FUNCTIONS 
+ *  INPUT FUNCTIONS
  *********************************************************************************************************/
 
 /**
@@ -462,14 +462,14 @@ unsigned char hexToAscii(unsigned char hexData)
 int* getAcc(unsigned int balanceBlockID)
 {
   createDataRequestPacket(balanceBlockID);
-  
+
   CAN.readMsgBuf(&rxId, &len, rxBuf);      // Read data: len = data length, buf = data byte(s)
   CAN.readMsgBuf(&rxId, &len, rx2Buf);     // Read data: len = data length, buf = data byte(s)
   static int accData[3];
   accData[0] = (rxBuf[3] << 8) + rxBuf[4];
   accData[1] = (rxBuf[5] << 8) + rxBuf[6];
   accData[2] = (rxBuf[7] << 8) + rx2Buf[0];
-  
+
   return accData;
 }
 
@@ -481,14 +481,14 @@ int* getAcc(unsigned int balanceBlockID)
 int* getGyro(unsigned int balanceBlockID)
 {
   createDataRequestPacket(balanceBlockID);
-  
+
   CAN.readMsgBuf(&rxId, &len, rxBuf);      // Read data: len = data length, buf = data byte(s)
   CAN.readMsgBuf(&rxId, &len, rx2Buf);     // Read data: len = data length, buf = data byte(s)
   static int gyroData[3];
   gyroData[0] = (rx2Buf[1] << 8) + rx2Buf[2];
   gyroData[1] = (rx2Buf[3] << 8) + rx2Buf[4];
   gyroData[2] = (rx2Buf[5] << 8) + rx2Buf[6];
-  
+
   return gyroData;
 }
 
@@ -500,10 +500,10 @@ int* getGyro(unsigned int balanceBlockID)
 unsigned char getDetect(unsigned int detectBlockID)
 {
   createDataRequestPacket(detectBlockID);
-  
+
   CAN.readMsgBuf(&rxId, &len, rxBuf);      // Read data: len = data length, buf = data byte(s)
   unsigned char irData = rxBuf[3];
-  
+
   return irData;
 }
 
@@ -515,10 +515,10 @@ unsigned char getDetect(unsigned int detectBlockID)
 unsigned char getEye(unsigned int eyeBlockID)
 {
   createDataRequestPacket(eyeBlockID);
-  
+
   CAN.readMsgBuf(&rxId, &len, rxBuf);      // Read data: len = data length, buf = data byte(s)
   unsigned char ultrasonicData = rxBuf[3];
-  
+
   return ultrasonicData;
 }
 
@@ -530,10 +530,10 @@ unsigned char getEye(unsigned int eyeBlockID)
 unsigned char getGesture(unsigned int gestureBlockID)
 {
   createDataRequestPacket(gestureBlockID);
-  
+
   CAN.readMsgBuf(&rxId, &len, rxBuf);      // Read data: len = data length, buf = data byte(s)
   unsigned char pirData = rxBuf[3];
-  
+
   return pirData;
 }
 
@@ -545,10 +545,10 @@ unsigned char getGesture(unsigned int gestureBlockID)
 unsigned char getKnob(unsigned int knobBlockID)
 {
   createDataRequestPacket(knobBlockID);
-  
+
   CAN.readMsgBuf(&rxId, &len, rxBuf);      // Read data: len = data length, buf = data byte(s)
   unsigned char knobData = rxBuf[3];
-  
+
   return knobData;
 }
 
@@ -560,10 +560,10 @@ unsigned char getKnob(unsigned int knobBlockID)
 unsigned char getMic(unsigned int micBlockID)
 {
   createDataRequestPacket(micBlockID);
-  
+
   CAN.readMsgBuf(&rxId, &len, rxBuf);      // Read data: len = data length, buf = data byte(s)
   unsigned char micData = rxBuf[3];
-  
+
   return micData;
 }
 
@@ -575,10 +575,10 @@ unsigned char getMic(unsigned int micBlockID)
 unsigned char getPhoto(unsigned int photoBlockID)
 {
   createDataRequestPacket(photoBlockID);
-  
+
   CAN.readMsgBuf(&rxId, &len, rxBuf);      // Read data: len = data length, buf = data byte(s)
   unsigned char photoData = rxBuf[3];
-  
+
   return photoData;
 }
 
@@ -590,10 +590,10 @@ unsigned char getPhoto(unsigned int photoBlockID)
 unsigned char getTemp(unsigned int tempBlockID)
 {
   createDataRequestPacket(tempBlockID);
-  
+
   CAN.readMsgBuf(&rxId, &len, rxBuf);      // Read data: len = data length, buf = data byte(s)
   unsigned char tempData = rxBuf[3];
-  
+
   return tempData;
 }
 
@@ -605,10 +605,10 @@ unsigned char getTemp(unsigned int tempBlockID)
 unsigned char getTilt(unsigned int tiltBlockID)
 {
   createDataRequestPacket(tiltBlockID);
-  
+
   CAN.readMsgBuf(&rxId, &len, rxBuf);      // Read data: len = data length, buf = data byte(s)
   unsigned char tiltData = rxBuf[3];
-  
+
   return tiltData;
 }
 
@@ -620,10 +620,10 @@ unsigned char getTilt(unsigned int tiltBlockID)
 //unsigned char getTemp(unsigned int tempBlockID)
 //{
 //  createDataRequestPacket(tempBlockID);
-//  
+//
 //  CAN.readMsgBuf(&rxId, &len, rxBuf);      // Read data: len = data length, buf = data byte(s)
 // unsigned char tempData = rxBuf[3];
-//  
+//
 //  return tempData;
 //}
 
@@ -635,10 +635,10 @@ unsigned char getTilt(unsigned int tiltBlockID)
 unsigned char getSlide(unsigned int slideBlockID)
 {
   createDataRequestPacket(slideBlockID);
-  
+
   CAN.readMsgBuf(&rxId, &len, rxBuf);      // Read data: len = data length, buf = data byte(s)
   unsigned char sliderData = rxBuf[3];
-  
+
   return sliderData;
 }
 
@@ -650,20 +650,20 @@ unsigned char getSlide(unsigned int slideBlockID)
 unsigned char getFollow(unsigned int followBlockID)
 {
   createDataRequestPacket(followBlockID);
-  
+
   CAN.readMsgBuf(&rxId, &len, rxBuf);      // Read data: len = data length, buf = data byte(s)
   unsigned char irData = rxBuf[3];
-  
+
   return irData;
 }
 
 /*********************************************************************************************************
- *  OUTPUT FUNCTIONS 
+ *  OUTPUT FUNCTIONS
  *********************************************************************************************************/
 
 /**
   * @brief  Sets DC motor speed and direction values for 360 BLOCK
-  * @param  MESSAGE_ID_360_BLOCK 
+  * @param  MESSAGE_ID_360_BLOCK
 			motorDirection	: forward or backward
 			motorSpeed	: PWM value (0x00 - 0xFF)
 			motorEnable	: enable or disable
@@ -678,7 +678,7 @@ void set360(unsigned int motor360BlockID, unsigned char motorDirection, unsigned
 /**
   * @brief  Sets buzzer state for BIPP BLOCK
   * @param  MESSAGE_ID_BIPP_BLOCK
-			buzzerState : "0" or "1"	
+			buzzerState : "0" or "1"
   * @retval None
   */
 void setBipp(unsigned int bippBlockID, unsigned char buzzerState)
@@ -717,7 +717,7 @@ void setGrip(unsigned int gripBlockID, unsigned char motorAngle, unsigned char m
 /**
   * @brief  Sets bar graph level value for LEVEL BLOCK
   * @param  MESSAGE_ID_LEVEL_BLOCK
-			barGraphData : 0x00 - 0xFF	
+			barGraphData : 0x00 - 0xFF
   * @retval None
   */
 void setLevel(unsigned int levelBlockID, unsigned char barGraphData)
@@ -753,7 +753,7 @@ void setLink(unsigned int linkBlockID, unsigned char motorAngle, unsigned char m
 
 /**
   * @brief  Sets DC motor speed and direction values for MOTION BLOCK
-  * @param  MESSAGE_ID_MOTION_BLOCK 
+  * @param  MESSAGE_ID_MOTION_BLOCK
 			motorDdirection	: forward or backward
 			motorSpeed		: PWM value (0x00 - 0xFF)
 			motorEnable		: enable or disable
@@ -767,7 +767,7 @@ void setMotion(unsigned int motionBlockID, unsigned char motorDirection, unsigne
 
 /**
   * @brief  Sets DC motor speed and direction values for ROLL BLOCK
-  * @param  MESSAGE_ID_ROLL_BLOCK 
+  * @param  MESSAGE_ID_ROLL_BLOCK
 			motorDdirection	: forward or backward
 			motorSpeed		: PWM value (0x00 - 0xFF)
 			motorEnable		: enable or disable
@@ -781,7 +781,7 @@ void setRoll(unsigned int rollBlockID, unsigned char motorDirection, unsigned ch
 
 /**
   * @brief  Sets DC motor speed and direction values for BIRRR BLOCK
-  * @param  MESSAGE_ID_BIRRR_BLOCK 
+  * @param  MESSAGE_ID_BIRRR_BLOCK
 			motorDdirection	: forward or backward
 			motorSpeed		: PWM value (0x00 - 0xFF)
 			motorEnable		: enable or disable

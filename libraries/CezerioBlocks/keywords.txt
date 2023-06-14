@@ -1,6 +1,6 @@
 createDataRequestPacket		KEYWORD2
 getInputDataAndDriveOutput	KEYWORD2
-initSmartBlocks			KEYWORD2
+initcezerioBlocks			KEYWORD2
 initSmartBlue			  KEYWORD2
 
 getAcc				KEYWORD2

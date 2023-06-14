@@ -1,7 +1,7 @@
 /*
-  SmartBlockFunctions.h
+  cezerioBlocks.h
   2017 Copyright (c) RFtek Electronics Ltd.  All right reserved.
-  
+
   Authors	: Huseyin Ulvi AYDOGMUS, Ozgur BOSTAN
   Date		: 2017-03-20
   This library is free software; you can redistribute it and/or
@@ -19,8 +19,8 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-
   1301  USA
 */
-#ifndef SMARTBLOCKFUNCTIONS_H_
-#define SMARTBLOCKFUNCTIONS_H_
+#ifndef CEZERIOBLOCKS_H_
+#define CEZERIOBLOCKS_H_
 
 #include "mcp_can.h"
 
@@ -74,26 +74,26 @@
 #define MESSAGE_ID_LEVEL_BLOCK     0x110
 #define MESSAGE_ID_LIGHT_BLOCK     0x120
 #define MESSAGE_ID_LINK_BLOCK      0x130
-#define MESSAGE_ID_MOTION_BLOCK    0x140 
+#define MESSAGE_ID_MOTION_BLOCK    0x140
 #define MESSAGE_ID_ROLL_BLOCK      0x150
 #define MESSAGE_ID_BIRRR_BLOCK     0x160
 
 /*********************************************************************************************************
- *  Variables 
+ *  Variables
  *********************************************************************************************************/
 
 /*********************************************************************************************************
- *  SmartBlockFunctions 
+ *  Functions
  *********************************************************************************************************/
 
-/* GENERIC FUNCTIONS */ 
+/* GENERIC FUNCTIONS */
 void createDataRequestPacket(unsigned int blockMessageId);
 void getInputDataAndDriveOutput(void);
 unsigned char asciiToHex(unsigned char asciiData);
 unsigned char hexToAscii(unsigned char hexData);
 
 /* INIT FUNCTIONS */
-void initSmartBlocks(void);
+void initcezerioBlocks(void);
 void initSmartBlue(void);
 
 /* BLE FUNCTIONS */
