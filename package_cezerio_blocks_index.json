@@ -9,6 +9,41 @@
         {
           "name": "cezerio Blocks",
           "architecture": "avr",
+          "version": "1.0.1",
+          "category": "Contributed",
+          "url": "https://github.com/cezer-io/cezerio-blocks-arduino/archive/refs/tags/1.0.1.tar.gz",
+          "archiveFileName": "1.0.1.tar.gz",
+          "checksum": "SHA-256:bf917bcc4b7f24f45dc7858d43c90a5612fb3075634f71f1ef5b300ae4970b49",
+          "size": "7598796",
+          "help": {
+            "online": ""
+          },
+          "boards": [
+            {
+              "name": "cezerio Blocks"
+            }
+          ],
+          "help": {
+            "online": "https://github.com/cezer-io"
+          },
+          "toolsDependencies": [
+            {
+              "packager": "arduino",
+              "name": "avrdude",
+              "version": "6.3.0-arduino17"
+            },
+            {
+              "packager": "arduino",
+              "name": "arduinoOTA",
+              "version": "1.3.0"
+            }
+          ],
+          "discoveryDependencies": [],
+          "monitorDependencies": []
+        },
+        {
+          "name": "cezerio Blocks",
+          "architecture": "avr",
           "version": "1.0.0",
           "category": "Contributed",
           "url": "https://github.com/cezer-io/cezerio-blocks-arduino/archive/refs/tags/1.0.0.tar.gz",
@@ -40,7 +75,7 @@
           ],
           "discoveryDependencies": [],
           "monitorDependencies": []
-        }
+          }
       ],
       "tools": [
         {
