@@ -1,30 +1,8 @@
-/*
-  DataTransferFunctions.cpp
-  2017 Copyright (c) RFtek Electronics Ltd.  All right reserved.
-  
-  Authors	: Huseyin Ulvi AYDOGMUS, Ozgur BOSTAN
-  Date		: 2017-04-27
-  This library is free software; you can redistribute it and/or
-  modify it under the terms of the GNU Lesser General Public
-  License as published by the Free Software Foundation; either
-  version 2.1 of the License, or (at your option) any later version.
-
-  This library is distributed in the hope that it will be useful,
-  but WITHOUT ANY WARRANTY; without even the implied warranty of
-  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-  Lesser General Public License for more details.
-
-  You should have received a copy of the GNU Lesser General Public
-  License along with this library; if not, write to the Free Software
-  Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-
-  1301  USA
-*/
-
 #include "DataTransferFunctions.h"
 unsigned char resolvePacketFlag = 0;
 
 /**
-  * @brief  Capture packet from Serial Data 
+  * @brief  Capture packet from Serial Data
   * @param  None
   * @retval None
   */
@@ -33,9 +11,9 @@ void captureData(capturedPacketType*	capturedPacket,
                  const unsigned char 	capturedDataSize)
 {
   unsigned char i = 0;
-  
+
   for(i = 0; i < capturedDataSize; i++)
-  {    
+  {
     switch(capturedPacket->data_capture_status)
     {
       case CAPTURE_START:
@@ -50,15 +28,15 @@ void captureData(capturedPacketType*	capturedPacket,
 		  capturedPacket->data_capture_status          = CAPTURE_START;
 		  capturedPacket->data_counter		       = 0;
 		}
-        
+
         break;
       }
-      
+
       case CAPTURE_ROBOT_ID:
       {
         capturedPacket->data_packet.robot_id           = capturedData[i];
         capturedPacket->data_capture_status            = CAPTURE_PACKET_ID;
-        
+
         break;
       }
 
@@ -66,51 +44,51 @@ void captureData(capturedPacketType*	capturedPacket,
       {
         capturedPacket->data_packet.packet_id          = capturedData[i];
         capturedPacket->data_capture_status            = CAPTURE_DATA;
-        
+
         break;
       }
-           
+
       case CAPTURE_DATA:
       {
         capturedPacket->data_packet.data[capturedPacket->data_counter] = capturedData[i];
         capturedPacket->data_counter++;
-        
+
         if(capturedPacket->data_counter >= 1)
         {
           capturedPacket->data_capture_status          = CAPTURE_STOP;
         }
-        
+
         break;
-      }    
-           
+      }
+
       case CAPTURE_STOP:
       {
         if(STOP_BYTE == capturedData[i])
         {
           capturedPacket->data_packet.stop_byte        = capturedData[i];
-          
-          // packet resolve 
+
+          // packet resolve
           //resolvePacket(&(capturedPacket->data_packet));
 	  resolvePacketFlag = 1;
         }
-        
+
         capturedPacket->data_capture_status            = CAPTURE_START;
         capturedPacket->data_counter                   = 0;
-        
+
         break;
       }
-      
+
       default:
       {
         capturedPacket->data_capture_status            = CAPTURE_START;
         capturedPacket->data_counter                   = 0;
       }
     }
-  }	
+  }
 }
 
 /**
-  * @brief  Pack data with a given format 
+  * @brief  Pack data with a given format
   * @param  None
   * @retval None
   */
@@ -123,22 +101,22 @@ void packData(dataPacketType* data_packet, unsigned char robotID, unsigned char 
 }
 
 /**
-  * @brief  Resolve captured Serial Data 
+  * @brief  Resolve captured Serial Data
   * @param  None
   * @retval None
   */
 void resolvePacket(const dataPacketType* capturedPacket)
 {
   dataPacketType packet = {0};
-  
+
   switch(capturedPacket->packet_id)
-  { 
+  {
     case BLE_ROBOT_NAME:
-    
-      break; 
+
+      break;
 
     case BLE_MOVE_FORWARD:
-      
+
       break;
 
     case BLE_MOVE_BACKWARD:
@@ -158,7 +136,7 @@ void resolvePacket(const dataPacketType* capturedPacket)
       break;
 
     case BLE_MOVE_FORWARD_LEFT:
-    
+
       break;
 
     case BLE_MOVE_BACKWARD_RIGHT:
@@ -334,7 +312,7 @@ void resolvePacket(const dataPacketType* capturedPacket)
       break;
 
     default:
-      
+
       break;
   }
 }
