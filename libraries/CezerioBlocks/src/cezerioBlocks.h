@@ -95,6 +95,8 @@ unsigned char hexToAscii(unsigned char hexData);
 /* INIT FUNCTIONS */
 void initCezerioBlocks(void);
 void initSmartBlue(void);
+void createBlockDataRequestPacket(unsigned int requestMessageId);
+uint16_t getBlockID();
 
 /* BLE FUNCTIONS */
 void getSmartBlueData(void);

@@ -793,6 +793,22 @@ void setBirrr(unsigned int birrrBlockID, unsigned char motorDirection, unsigned 
   CAN.sendMsgBuf(birrrBlockID, 0, 7, sendData);
 }
 
+void createBlockDataRequestPacket(unsigned int requestMessageId)
+{
+  unsigned char sendData[4] = {SYNC_BYTE_START, 0x04, 0x00, SYNC_BYTE_STOP};
+  CAN.sendMsgBuf(requestMessageId, 0, 4, sendData);
+}
+
+uint16_t getBlockID()
+{
+  createBlockDataRequestPacket(MESSAGE_ID_REQUEST);
+
+  CAN.readMsgBuf(&rxId, &len, rxBuf);      // Read data: len = data length, buf = data byte(s)
+  unsigned char messageIDH = rxBuf[3];
+  unsigned char messageIDL = rxBuf[4];
+
+  return (messageIDH << 8 | messageIDL);
+}
 /*********************************************************************************************************
  *  END FILE
  *********************************************************************************************************/
